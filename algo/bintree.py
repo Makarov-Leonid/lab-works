@@ -18,6 +18,9 @@ class BinSearchTree:
 
     def __getitem__(self,key):
         return self.get(key)
+# TODO: подумать, что можно зваихнуть в repr
+    def __repr__(arg):
+        pass
 
     def __contains__(self,key):
         if self._get(key,self.root):
