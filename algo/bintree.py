@@ -67,11 +67,6 @@ class BinSearchTree:
       else:
           return self._get(key,currentNode.rightChild)
 
-# TODO: доделать delete, добавить варианты что доделать, если:
-    # Удаляемый узел не имеет потомков.
-    # У удаляемого узла есть только один потомок.
-    # У удаляемого узла есть оба потомка
-
     def delete(self,key):
         if self.size > 1:
             nodeToRemove = self._get(key,self.root)
@@ -84,7 +79,84 @@ class BinSearchTree:
             self.root = None
             self.size = self.size - 1
         else:
-        raise KeyError('Error, key not in tree')
+            raise KeyError('Error, key not in tree')
+
+    def remove(currentNode):
+        if currentNode.isLeaf():        #current node haven't child
+            if currentNode == currentNode.parent.leftChild:
+                currentNode.parent.leftChild = None
+            else:
+                currentNode.parent.rightChild = None
+        elif currentNode.hasBothChildren():     #current node has two child
+          succ = currentNode.findSuccessor()
+          succ.spliceOut()
+          currentNode.key = succ.key
+          currentNode.payload = succ.payload
+        else:       #current node has one child
+            if currentNode.hasLeftChild():
+                if currentNode.isLeftChild():
+                    currentNode.leftChild.parent = currentNode.parent
+                    currentNode.parent.leftChild = currentNode.leftChild
+                elif currentNode.isRightChild():
+                    currentNode.leftChild.parent = currentNode.parent
+                    currentNode.parent.rightChild = currentNode.leftChild
+                else:
+                    currentNode.replaceNodeData(currentNode.leftChild.key,
+                    currentNode.leftChild.payload,
+                    currentNode.leftChild.leftChild,
+                    currentNode.leftChild.rightChild)
+            else:
+                if currentNode.isLeftChild():
+                    currentNode.rightChild.parent = currentNode.parent
+                    currentNode.parent.leftChild = currentNode.rightChild
+                elif currentNode.isRightChild():
+                    currentNode.rightChild.parent = currentNode.parent
+                    currentNode.parent.rightChild = currentNode.rightChild
+                else:
+                    currentNode.replaceNodeData(currentNode.rightChild.key,
+                    currentNode.rightChild.payload,
+                    currentNode.rightChild.leftChild,
+                    currentNode.rightChild.rightChild)
+
+    def findSuccessor(self):
+        succ = None
+        if self.hasRightChild():
+            succ = self.rightChild.findMin()
+        else:
+            if self.parent:
+                if self.isLeftChild():
+                    succ = self.parent
+                else:
+                    self.parent.rightChild = None
+                    succ = self.parent.findSuccessor()
+                    self.parent.rightChild = self
+        return succ
+
+    def findMin(self):
+        current = self
+        while current.hasLeftChild():
+            current = current.leftChild
+        return current
+
+    def spliceOut(self):
+        if self.isLeaf():
+            if self.isLeftChild():
+                self.parent.leftChild = None
+            else:
+                self.parent.rightChild = None
+        elif self.hasAnyChildren():
+            if self.hasLeftChild():
+                if self.isLeftChild():
+                    self.parent.leftChild = self.leftChild
+                else:
+                    self.parent.rightChild = self.leftChild
+                self.leftChild.parent = self.parent
+            else:
+                if self.isLeftChild():
+                    self.parent.leftChild = self.rightChild
+                else:
+                    self.parent.rightChild = self.rightChild
+                    self.rightChild.parent = self.parent
 
     def __delitem__(self,key):
       self.delete(key)
