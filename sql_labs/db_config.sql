@@ -83,3 +83,4 @@ INSERT INTO SESSION(teacher, type, time_, grup_, classes) VALUES('Гудини �
 INSERT INTO SESSION(teacher, type, time_, grup_, classes) VALUES('Фавн Алек Фир','exam','2019/1/26',999,'Английский язык');
 INSERT INTO SESSION(teacher, type, time_, grup_, classes) VALUES('Щитов Александр Сергеевич','exam','2019/1/27',300,'полевая медицина');
 INSERT INTO SESSION(teacher, type, time_, grup_, classes) VALUES('Амасек Виктор Анатольевич','credit','2019/1/21',187,'изучение гомункулов');
+INSERT INTO SESSION(teacher, type, time_, grup_, classes) VALUES('Амодель Верст','exam','2019/3/25',194,'Психоанализ');
