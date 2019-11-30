@@ -46,6 +46,7 @@ INSERT INTO grup_(id, year, students, faculty) VALUES(190,3,15,'Санитаро
 INSERT INTO grup_(id, year, students, faculty) VALUES(191,3,15,'Озвучки фильмов');
 INSERT INTO grup_(id, year, students, faculty) VALUES(192,4,12,'Social Justice Warriors');
 INSERT INTO grup_(id, year, students, faculty) VALUES(193,4,3,'Гендерфлюидных вертосексуалов');
+INSERT INTO grup_(id, year, students, faculty) VALUES(194,3,3,'Гендерфлюидных вертосексуалов');
 INSERT INTO grup_(id, year, students, faculty) VALUES(473,2,29,'Бойцов Кекистана');
 
 INSERT INTO CLASSES(Department, Name, hours) VALUES('Главная кафедра', 'мемология', 100);
@@ -73,7 +74,8 @@ INSERT INTO CLASSES(Department, Name, hours) VALUES('Кафедра Мемоло
 INSERT INTO SESSION(teacher, type, time_, grup_, classes) VALUES('Жракон Сергей Егорович','exam','2019/01/29',473,'Демонология');
 INSERT INTO SESSION(teacher, type, time_, grup_, classes) VALUES('Гудини Сергей Верст','credit','2019/1/23',186,'Энергетика');
 INSERT INTO SESSION(teacher, type, time_, grup_, classes) VALUES('Серый Алекс Вольфович','exam','2019/1/23',186,'Оказание первой помощи в twiter');
-INSERT INTO SESSION(teacher, type, time_, grup_, classes) VALUES('Гудини Сергей Верст','exam','2019/1/24',193,'изучение гомункулов');
+INSERT INTO SESSION(teacher, type, time_, grup_, classes) VALUES('Гудини Сергей Верст','exam','2019/3/24',193,'изучение гомункулов');
+INSERT INTO SESSION(teacher, type, time_, grup_, classes) VALUES('Гудини Сергей Верст','exam','2019/3/25',194,'изучение гомункулов');
 INSERT INTO SESSION(teacher, type, time_, grup_, classes) VALUES('Жракон Сергей Егорович','exam','2019/1/24',193,'Демонология');
 INSERT INTO SESSION(teacher, type, time_, grup_, classes) VALUES('Зеле Шнайд Эр','credit','2019/1/29',188,'Искусство пропаганды');
 INSERT INTO SESSION(teacher, type, time_, grup_, classes) VALUES('Гудини Сергей Верст','credit','2019/1/28',999,'Энергетика');
