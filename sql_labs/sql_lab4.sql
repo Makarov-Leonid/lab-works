@@ -9,7 +9,8 @@
 -- [WITH [CASCADED | LOCAL] CHECK OPTION]
 --
 --
--- Task_1(факультет, курс, количество зачетов, количество экзаменов)
+-- Task_1(Факультет, курс, количество зачетов, количество экзаменов в летнюю сессию)
+
 
 CREATE OR REPLACE
 VIEW Task_1
@@ -25,3 +26,16 @@ AS SELECT grup_.faculty as faculty,
           end as exam
 from SESSION right join grup_ on SESSION.grup_ = grup_.id
 group by faculty, year;
+
+-- Task_2(Группа, название предмета, даты всех экзаменов и зачетов по этому предмету.)
+
+CREATE OR REPLACE
+VIEW Task_2
+AS SELECT SESSION.grup_ as grup_,
+          CLASSES.Name as name_,
+          SESSION.time_ as time_
+from SESSION left join CLASSES on SESSION.classes = CLASSES.Name
+order by grup_, name_;
+
+-- Task_3(ФИО преподавателя, название предмета, количество видов контроля по этому предмету для этого преподователя.)
+-- Task_4(Название предмета, кафедра, общее количество студентов, сдающих этот предмет в зимнюю сессию.)
