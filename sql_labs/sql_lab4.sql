@@ -24,7 +24,7 @@ from (SELECT grup_.faculty as faculty,
             when SESSION.type = 'exam' and MONTH(SESSION.time_) >= 2 and MONTH(SESSION.time_) <= 8 then 1
             else 0
           end as exam
-      from SESSION right join grup_ on SESSION.grup_ = grup_.id) as temp
+      from SESSION left join grup_ on SESSION.grup_ = grup_.id) as temp
 group by faculty, year;
 
 -- Task_2(Группа, название предмета, даты всех экзаменов и зачетов по этому предмету.)
@@ -39,21 +39,17 @@ order by grup_, name_;
 
 -- Task_3(ФИО преподавателя, название предмета, количество видов контроля по этому предмету для этого преподователя.)
 
---TODO: Task_3 не работает корректно, доделать
+--TODO: Task_3 проверить
 
--- CREATE OR REPLACE
--- VIEW Task_3
--- AS select SESSION.teacher as teacher,
---           SESSION.classes as classes,
---           case
---              when exists(select * from SESSION where type = 'credit' and SESSION.teacher = teacher) and
---              exists(select * from SESSION where type = 'exam') then 2
---              when exists(select * from SESSION where type = 'credit') or
---              exists(select * from SESSION where type = 'exam') then 1
---              else 0
---           end
--- from (select * from SESSION) as
--- group by classes
--- order by teacher, classes;
+CREATE OR REPLACE
+VIEW Task_3
+AS select SESSION.teacher as teacher,
+          SESSION.classes as classes,
+          temp.num_ as num_
+from SESSION left join
+(select teacher, count(number_) as num_
+      from (select teacher, type, 1 as number_ from SESSION group by teacher, type) as yemp
+group by teacher) as temp on SESSION.teacher = temp.teacher
+group by teacher, classes;
 
 -- Task_4(Название предмета, кафедра, общее количество студентов, сдающих этот предмет в зимнюю сессию.)
