@@ -24,4 +24,4 @@ AS SELECT grup_.faculty as faculty,
             else 0
           end as exam
 from SESSION right join grup_ on SESSION.grup_ = grup_.id
-group by exam, credit, faculty, year;
+group by faculty, year;
