@@ -20,7 +20,7 @@ AS SELECT grup_.faculty as faculty,
             else 0
           end as credit,
           case
-            when SESSION.type = 'exam' then 1
+            when SESSION.type = 'exam' and MONTH(SESSION.time_) >= 2 and MONTH(SESSION.time_) <= 8 then 1
             else 0
           end as exam
 from SESSION right join grup_ on SESSION.grup_ = grup_.id
