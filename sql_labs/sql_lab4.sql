@@ -11,8 +11,6 @@
 --
 -- Task_1(Факультет, курс, количество зачетов, количество экзаменов в летнюю сессию)
 
-
-
 CREATE OR REPLACE
 VIEW Task_1
 AS select faculty, year, SUM(credit), SUM(exam)
@@ -26,7 +24,7 @@ from (SELECT grup_.faculty as faculty,
             when SESSION.type = 'exam' and MONTH(SESSION.time_) >= 2 and MONTH(SESSION.time_) <= 8 then 1
             else 0
           end as exam
-from SESSION right join grup_ on SESSION.grup_ = grup_.id) as temp
+      from SESSION right join grup_ on SESSION.grup_ = grup_.id) as temp
 group by faculty, year;
 
 -- Task_2(Группа, название предмета, даты всех экзаменов и зачетов по этому предмету.)
