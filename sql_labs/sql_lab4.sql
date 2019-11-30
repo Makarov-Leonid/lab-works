@@ -11,22 +11,23 @@
 --
 -- Task_1(Факультет, курс, количество зачетов, количество экзаменов в летнюю сессию)
 
---TODO: Task_1 не работает корректно, доделать
 
--- CREATE OR REPLACE
--- VIEW Task_1
--- AS SELECT grup_.faculty as faculty,
---           grup_.year as year,
---           case
---             when SESSION.type = 'credit' then 1
---             else 0
---           end as credit,
---           case
---             when SESSION.type = 'exam' and MONTH(SESSION.time_) >= 2 and MONTH(SESSION.time_) <= 8 then 1
---             else 0
---           end as exam
--- from SESSION right join grup_ on SESSION.grup_ = grup_.id
--- group by faculty, year;
+
+CREATE OR REPLACE
+VIEW Task_1
+AS select faculty, year, SUM(credit), SUM(exam)
+from (SELECT grup_.faculty as faculty,
+          grup_.year as year,
+          case
+            when SESSION.type = 'credit' then 1
+            else 0
+          end as credit,
+          case
+            when SESSION.type = 'exam' and MONTH(SESSION.time_) >= 2 and MONTH(SESSION.time_) <= 8 then 1
+            else 0
+          end as exam
+from SESSION right join grup_ on SESSION.grup_ = grup_.id) as temp
+group by faculty, year;
 
 -- Task_2(Группа, название предмета, даты всех экзаменов и зачетов по этому предмету.)
 
