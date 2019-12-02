@@ -74,8 +74,7 @@ INSERT INTO CLASSES(Department, Name, hours) VALUES('Кафедра Мемоло
 INSERT INTO SESSION(teacher, type, time_, grup_, classes) VALUES('Жракон Сергей Егорович','exam','2019/01/29',473,'Демонология');
 INSERT INTO SESSION(teacher, type, time_, grup_, classes) VALUES('Гудини Сергей Верст','credit','2019/1/23',186,'Энергетика');
 INSERT INTO SESSION(teacher, type, time_, grup_, classes) VALUES('Серый Алекс Вольфович','exam','2019/1/23',186,'Оказание первой помощи в twiter');
-INSERT INTO SESSION(teacher, type, time_, grup_, classes) VALUES('Гудини Сергей Верст','exam','2019/3/24',193,'изучение гомункулов');
-INSERT INTO SESSION(teacher, type, time_, grup_, classes) VALUES('Гудини Сергей Верст','exam','2019/3/25',194,'изучение гомункулов');
+INSERT INTO SESSION(teacher, type, time_, grup_, classes) VALUES('Гудини Сергей Верст','exam','2019/1/24',193,'изучение гомункулов');
 INSERT INTO SESSION(teacher, type, time_, grup_, classes) VALUES('Жракон Сергей Егорович','exam','2019/1/24',193,'Демонология');
 INSERT INTO SESSION(teacher, type, time_, grup_, classes) VALUES('Зеле Шнайд Эр','credit','2019/1/29',188,'Искусство пропаганды');
 INSERT INTO SESSION(teacher, type, time_, grup_, classes) VALUES('Гудини Сергей Верст','credit','2019/1/28',999,'Энергетика');
@@ -83,4 +82,4 @@ INSERT INTO SESSION(teacher, type, time_, grup_, classes) VALUES('Гудини �
 INSERT INTO SESSION(teacher, type, time_, grup_, classes) VALUES('Фавн Алек Фир','exam','2019/1/26',999,'Английский язык');
 INSERT INTO SESSION(teacher, type, time_, grup_, classes) VALUES('Щитов Александр Сергеевич','exam','2019/1/27',300,'полевая медицина');
 INSERT INTO SESSION(teacher, type, time_, grup_, classes) VALUES('Амасек Виктор Анатольевич','credit','2019/1/21',187,'изучение гомункулов');
-INSERT INTO SESSION(teacher, type, time_, grup_, classes) VALUES('Амодель Верст','exam','2019/3/25',194,'Психоанализ');
+INSERT INTO SESSION(teacher, type, time_, grup_, classes) VALUES('Амасек Виктор Анатольевич','exam','2019/4/21',187,'изучение гомункулов');
