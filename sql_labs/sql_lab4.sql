@@ -13,7 +13,7 @@
 
 CREATE OR REPLACE
 VIEW Task_1
-AS select faculty, year, SUM(credit), SUM(exam)
+AS select temp.faculty, temp.year, SUM(temp.credit), SUM(temp.exam)
 from (SELECT grup_.faculty as faculty,
           grup_.year as year,
           case
@@ -39,17 +39,16 @@ group by grup_, name_;
 
 -- Task_3(ФИО преподавателя, название предмета, количество видов контроля по этому предмету для этого преподователя.)
 
---TODO: Task_3 проверить
-
 CREATE OR REPLACE
 VIEW Task_3
 AS select SESSION.teacher as teacher,
           SESSION.classes as classes,
           temp.num_ as num_
 from SESSION left join
-(select teacher, count(number_) as num_
-      from (select teacher, type, 1 as number_ from SESSION group by teacher, type) as yemp
-group by teacher) as temp on SESSION.teacher = temp.teacher
-group by teacher, classes;
+  (select teacher, SUM(number_) as num_
+  from (select teacher, type, 1 as number_ from SESSION group by teacher, type) as temp
+  group by teacher) as temp_ on SESSION.teacher = temp_.teacher
+group by teacher, classes
+order by teacher, classes;
 
 -- Task_4(Название предмета, кафедра, общее количество студентов, сдающих этот предмет в зимнюю сессию.)
