@@ -33,9 +33,9 @@ CREATE OR REPLACE
 VIEW Task_2
 AS SELECT SESSION.grup_ as grup_,
           CLASSES.Name as name_,
-          SESSION.time_ as time_
+          GROUP_CONCAT(SESSION.time_) as time_
 from SESSION left join CLASSES on SESSION.classes = CLASSES.Name
-order by grup_, name_;
+group by grup_, name_;
 
 -- Task_3(ФИО преподавателя, название предмета, количество видов контроля по этому предмету для этого преподователя.)
 
