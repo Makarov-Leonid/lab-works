@@ -52,3 +52,13 @@ group by teacher, classes
 order by teacher, classes;
 
 -- Task_4(Название предмета, кафедра, общее количество студентов, сдающих этот предмет в зимнюю сессию.)
+--TODO: доделать Task_4
+CREATE OR REPLACE
+VIEW Task_4
+as select SESSION.classes as subject,
+          CLASSES.Department as Department,
+          SUM(grup_.students) as students
+from SESSION
+  left join CLASSES on SESSION.classes = CLASSES.Name
+  left join grup_ on SESSION.grup_ = grup_.id
+group by subject, Department;
